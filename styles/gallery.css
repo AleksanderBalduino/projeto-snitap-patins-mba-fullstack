@@ -1,0 +1,109 @@
+section.gallery {
+    width: 100%;
+    max-width: 80rem;
+    padding: 2.5rem 2rem;
+    margin-inline: auto;
+
+    & .gallery-header {
+        text-align: center;
+
+        & span {
+            font: 500 var(--text-sm)/1.5 var(--font-family-base);
+            text-transform: uppercase;
+        }
+    }
+
+    & img {
+        width: 100%;
+        height: auto;
+    }
+
+    .content {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-areas: 
+        "A B B"
+        "C C D";
+        gap: 2.5rem;
+
+        & figure {
+            border-radius: 2.5rem;
+            overflow: hidden;
+            position: relative;
+            line-height: 0;
+            animation: imageAppear linear backwards;
+            animation-timeline: view();
+            animation-range: 100px 300px;
+
+            &[data-delay] {
+                animation-range: 150px 350px;
+            }
+
+            &:nth-child(1) {
+                grid-area: A;
+            }
+    
+            &:nth-child(2) {
+                grid-area: B;
+            }
+    
+            &:nth-child(3) {
+                grid-area: C;
+            }
+    
+            &:nth-child(4) {
+                grid-area: D;
+            }
+
+            & > img {
+                height: 25rem;
+                object-fit: cover;
+                transition: scale 500ms;
+            }
+
+            & figcaption {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                gap: .5rem;
+                font: 500 var(--text-sm)/1.5 var(--font-family-base);
+                color: white;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                padding: 1.5rem 2rem;
+                background: linear-gradient(to top, rgb(0 0 0 / 0.64), rgb(0 0 0 / 0));
+                transform: translateY(100%);
+                transition: transform 500ms;
+
+                & > img {
+                    width: 2rem;
+                    aspect-ratio: 1/1;
+                    object-fit: cover;
+                    border: 50%;
+                }
+            }
+
+            &:hover {
+                & > img {
+                    scale: 1.1;
+                }
+
+                & figcaption {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}
+
+@keyframes imageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
