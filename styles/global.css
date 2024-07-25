@@ -33,16 +33,26 @@ h1, h2 {
 }
 
 h1 {
-    font-size: var(--text-xl);
+    font-size: 2rem;
     line-height: 1.25;
 }
 
 h2 {
-    font-size: var(--text-lg);
+    font-size: 1.5rem;
     line-height: 1.2;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+@media (width >= 80em) {
+    h1 {
+        font-size: var(--text-xl);
+    }
+
+    h2 {
+        font-size: var(--text-lg);
+    }
 }

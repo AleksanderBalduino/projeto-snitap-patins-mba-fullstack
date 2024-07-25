@@ -1,14 +1,13 @@
 section.gallery {
     width: 100%;
-    max-width: 80rem;
-    padding: 2.5rem 2rem;
+    padding: 1.5rem;
     margin-inline: auto;
 
     & .gallery-header {
         text-align: center;
 
         & span {
-            font: 500 var(--text-sm)/1.5 var(--font-family-base);
+            font: 500 0.75rem/1.5 var(--font-family-base);
             text-transform: uppercase;
         }
     }
@@ -19,12 +18,10 @@ section.gallery {
     }
 
     .content {
-        margin-top: 2rem;
-        display: grid;
-        grid-template-areas: 
-        "A B B"
-        "C C D";
-        gap: 2.5rem;
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
 
         & figure {
             border-radius: 2.5rem;
@@ -35,28 +32,8 @@ section.gallery {
             animation-timeline: view();
             animation-range: 100px 300px;
 
-            &[data-delay] {
-                animation-range: 150px 350px;
-            }
-
-            &:nth-child(1) {
-                grid-area: A;
-            }
-    
-            &:nth-child(2) {
-                grid-area: B;
-            }
-    
-            &:nth-child(3) {
-                grid-area: C;
-            }
-    
-            &:nth-child(4) {
-                grid-area: D;
-            }
-
             & > img {
-                height: 25rem;
+                height: 16rem;
                 object-fit: cover;
                 transition: scale 500ms;
             }
@@ -66,12 +43,12 @@ section.gallery {
                 align-items: center;
                 justify-content: flex-end;
                 gap: .5rem;
-                font: 500 var(--text-sm)/1.5 var(--font-family-base);
+                font: 500 0.75rem/1.5 var(--font-family-base);
                 color: white;
                 position: absolute;
                 bottom: 0;
                 width: 100%;
-                padding: 1.5rem 2rem;
+                padding: 1rem 1.5rem;
                 background: linear-gradient(to top, rgb(0 0 0 / 0.64), rgb(0 0 0 / 0));
                 transform: translateY(100%);
                 transition: transform 500ms;
@@ -105,5 +82,56 @@ section.gallery {
 
     to {
         opacity: 1;
+    }
+}
+
+@media (width >= 80em) {
+    section.gallery {
+        max-width: 80rem;
+        padding: 2.5rem 2rem;
+
+        & .gallery-header span {    
+            font: 500 var(--text-sm)/1.5 var(--font-family-base);
+        }
+
+        .content {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-areas: 
+            "A B B"
+            "C C D";
+            gap: 2.5rem;
+    
+            & figure {
+                &[data-delay] {
+                    animation-range: 150px 350px;
+                }
+                
+                &:nth-child(1) {
+                    grid-area: A;
+                }
+        
+                &:nth-child(2) {
+                    grid-area: B;
+                }
+        
+                &:nth-child(3) {
+                    grid-area: C;
+                }
+        
+                &:nth-child(4) {
+                    grid-area: D;
+                }
+    
+                & > img {
+                    height: 25rem;
+                }
+    
+                & figcaption {
+                    font: 500 var(--text-sm)/1.5 var(--font-family-base);
+                    padding: 1.5rem 2rem;
+                }
+            }
+        }
     }
 }
